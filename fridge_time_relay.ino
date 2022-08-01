@@ -3,7 +3,6 @@ LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
 #define Relay 3
 
-// Enable init screen
 bool initScreen = true;
 
 int timerState[2] = { 0, 0 };
@@ -126,14 +125,14 @@ void printInitScreen() {
   lcd.setCursor(0, 1);
   lcd.print("   Time Relay   ");
   delay(2000);
-  lcd.clear();  // Clears the display
+  lcd.clear(); 
 
   lcd.setCursor(0, 0);
   lcd.print("Sergey Bezugliy");
   lcd.setCursor(3, 1);
   lcd.print("codenv.top");
   delay(3000);
-  lcd.clear();  // Clears the display
+  lcd.clear(); 
 };
 
 void printParameter(char *parameterAbbreviation, int startCol, int Row, int *valueRef) {
