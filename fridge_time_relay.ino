@@ -10,9 +10,9 @@ int timerState[2] = { 0, 0 };
 
 int currentTick = 0;
 
-const int connectedTime[2] = { 1, 10};
+const int connectedTime[2] = { 30, 00};
 
-const int disconnectedTime[2] = { 1, 15};
+const int disconnectedTime[2] = { 45, 00};
 
 int calculateSeconds(int *timeArray){
   return timeArray[0] * 60 + timeArray[1];
@@ -21,10 +21,6 @@ int calculateSeconds(int *timeArray){
 const int connectedTicks = calculateSeconds(connectedTime);
 
 const int disconnectedTicks = calculateSeconds(disconnectedTime);
-
-const char *ErrorMessages[1] = {
-  "Unknown error   "
-};
 
 bool relayState = true;
 
@@ -35,7 +31,7 @@ void setup() {
   if (initScreen) printInitScreen();
   
   initPins();
-
+  relayConnect();
   delay(1000);
 }
 
@@ -145,15 +141,4 @@ void printParameter(char *parameterAbbreviation, int startCol, int Row, int *val
   lcd.print(parameterAbbreviation);
   lcd.setCursor(strlen(parameterAbbreviation) + startCol, Row);
   lcd.print(*valueRef);
-}
-
-
-void printError(int code){
-  lcd.clear();
-  lcd.setCursor(0, 0);
-  lcd.print("Error ");
-  lcd.print(code);
-  lcd.setCursor(0, 1);
-  lcd.print(ErrorMessages[code]);
-  delay(10000);
 }
