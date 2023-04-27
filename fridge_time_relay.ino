@@ -1,5 +1,7 @@
-#include <LiquidCrystal.h>
-LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
+
+#include <LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 
 #define Relay 3
 
@@ -25,7 +27,8 @@ bool relayState = true;
 
 void setup() {
 
-  lcd.begin(16, 2);
+  lcd.init();
+  lcd.backlight();
   
   if (initScreen) printInitScreen();
   
@@ -124,14 +127,14 @@ void printInitScreen() {
   lcd.print("     Fridge     ");
   lcd.setCursor(0, 1);
   lcd.print("   Time Relay   ");
-  delay(2000);
+  delay(1000);
   lcd.clear(); 
 
   lcd.setCursor(0, 0);
   lcd.print("Sergey Bezugliy");
   lcd.setCursor(3, 1);
   lcd.print("codenv.top");
-  delay(3000);
+  delay(1000);
   lcd.clear(); 
 };
 
