@@ -60,7 +60,7 @@ void disconnectedTimer(){
   }
 }
 
-bool checkTimer(int *ticks){
+bool checkTimer(const int ticks){
   increaseTimerState();
   if (currentTick >= ticks) {
     resetTimerState();
